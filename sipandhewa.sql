@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 22, 2025 at 01:57 PM
+-- Generation Time: Jan 04, 2026 at 03:47 PM
 -- Server version: 8.0.30
--- PHP Version: 8.2.23
+-- PHP Version: 8.3.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `si_ternak_buleleng`
+-- Database: `sipandhewa`
 --
 
 -- --------------------------------------------------------
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `desa` (
   `id` int NOT NULL,
   `kecamatan_id` int DEFAULT NULL,
-  `nama_desa` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_desa` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -101,7 +101,7 @@ INSERT INTO `desa` (`id`, `kecamatan_id`, `nama_desa`, `created_at`) VALUES
 
 CREATE TABLE `kecamatan` (
   `id` int NOT NULL,
-  `nama_kecamatan` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_kecamatan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -129,7 +129,7 @@ INSERT INTO `kecamatan` (`id`, `nama_kecamatan`, `created_at`) VALUES
 CREATE TABLE `pemotongan` (
   `id` int NOT NULL,
   `kecamatan_id` int DEFAULT NULL,
-  `jenis_hewan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `jenis_hewan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `jantan` int DEFAULT '0',
   `betina` int DEFAULT '0',
   `total` int DEFAULT '0',
@@ -178,7 +178,8 @@ CREATE TABLE `penyakit_hewan` (
 --
 
 INSERT INTO `penyakit_hewan` (`id`, `jenis_ternak`, `bulan`, `minggu_ke`, `jenis_penyakit`, `kasus_digital`, `sampel_positif`, `sampel_negatif`, `total_sampel`, `virus_teridentifikasi`, `lokasi`, `status_penanganan`, `catatan`, `created_by`, `created_at`, `updated_at`) VALUES
-(14, 'kambing', '2025-12', 2, 'Rabies', 30, 20, 10, 30, 'Rabies', 'buleleng', 'dalam_pengawasan', '', 7, '2025-12-22 13:55:29', '2025-12-22 13:55:29');
+(14, 'kambing', '2025-12', 2, 'Rabies', 30, 20, 10, 30, 'Rabies', 'buleleng', 'dalam_pengawasan', '', 7, '2025-12-22 13:55:29', '2025-12-22 13:55:29'),
+(15, 'kambing', '2026-01', 2, 'ygygyg', 2, 3, 4, 7, 'ybyyby', 'vggvgvg', 'dalam_penanganan', 'gvv', 10, '2026-01-04 15:32:11', '2026-01-04 15:32:11');
 
 -- --------------------------------------------------------
 
@@ -188,16 +189,16 @@ INSERT INTO `penyakit_hewan` (`id`, `jenis_ternak`, `bulan`, `minggu_ke`, `jenis
 
 CREATE TABLE `peternakan` (
   `id` int NOT NULL,
-  `nama_unit_usaha` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `jenis_peternakan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `alamat` text COLLATE utf8mb4_general_ci,
+  `nama_unit_usaha` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `jenis_peternakan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `alamat` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `desa_id` int DEFAULT NULL,
   `kecamatan_id` int DEFAULT NULL,
-  `telepon` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `telepon` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `kapasitas_kandang` int DEFAULT NULL,
   `jumlah_populasi` int DEFAULT NULL,
-  `kepemilikan` enum('Pribadi','Kemitraan','Kelompok') COLLATE utf8mb4_general_ci DEFAULT 'Pribadi',
-  `bulan_panen` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `kepemilikan` enum('Pribadi','Kemitraan','Kelompok') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Pribadi',
+  `bulan_panen` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_by` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -377,9 +378,9 @@ DELIMITER ;
 
 CREATE TABLE `produksi` (
   `id` int NOT NULL,
-  `nama_peternak` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `jenis_peternakan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `jenis_pakan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nama_peternak` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `jenis_peternakan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `jenis_pakan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `produksi_susu` decimal(10,2) DEFAULT NULL,
   `produksi_daging` decimal(10,2) DEFAULT NULL,
   `produksi_telur` int DEFAULT NULL,
@@ -407,8 +408,8 @@ INSERT INTO `produksi` (`id`, `nama_peternak`, `jenis_peternakan`, `jenis_pakan`
 CREATE TABLE `survei_pasar` (
   `id` int NOT NULL,
   `tanggal_survei` date NOT NULL,
-  `lokasi_pasar` enum('Pasar Banyuasri','Pasar Anyar','Pasar Buleleng') COLLATE utf8mb4_general_ci NOT NULL,
-  `komoditas` enum('Daging Babi','Daging Sapi','Daging Ayam') COLLATE utf8mb4_general_ci NOT NULL,
+  `lokasi_pasar` enum('Pasar Banyuasri','Pasar Anyar','Pasar Buleleng') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `komoditas` enum('Daging Babi','Daging Sapi','Daging Ayam') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `harga_ayam_utuh` decimal(10,2) DEFAULT '0.00',
   `harga_dada_ayam` decimal(10,2) DEFAULT '0.00',
   `harga_babi_utuh` decimal(10,2) DEFAULT '0.00',
@@ -416,9 +417,9 @@ CREATE TABLE `survei_pasar` (
   `harga_babi_isi` decimal(10,2) DEFAULT '0.00',
   `harga_balung_sapi` decimal(10,2) DEFAULT '0.00',
   `harga_sapi_isi` decimal(10,2) DEFAULT '0.00',
-  `nama_surveilens` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nomor_hp` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `catatan` text COLLATE utf8mb4_general_ci,
+  `nama_surveilens` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nomor_hp` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `catatan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `created_by` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -444,7 +445,7 @@ CREATE TABLE `users` (
   `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `role` enum('admin','user') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'user',
+  `role` enum('admin','petugas_kesmavet','petugas_keswan','petugas_bitpro','kepala_dinas') COLLATE utf8mb4_general_ci DEFAULT 'petugas_keswan',
   `is_active` tinyint(1) DEFAULT '1',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -455,8 +456,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `username`, `password`, `phone`, `role`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'admin@siternak.com', 'admin', '$2y$10$beGZ33hCB85H6ufQLGrUpejObINTKI2A8bTISd7rvte3FAXMjbvsC', NULL, 'admin', 1, '2025-12-21 15:47:13', '2025-12-22 08:19:40'),
-(7, 'sadam', 'sadam@gmail.com', 'sadam', '$2y$10$4NBuaD4peyKlp7wQDYWf6ejjR1ksO6LSVWTixhVx3Wes1z03oz7wS', '08432498234', 'user', 1, '2025-12-22 13:49:21', '2025-12-22 13:49:28');
+(1, 'Administrator', 'admin@siternak.com', 'admin', '$2y$10$beGZ33hCB85H6ufQLGrUpejObINTKI2A8bTISd7rvte3FAXMjbvsC', NULL, 'admin', 1, '2025-12-21 15:47:13', '2026-01-04 15:33:46'),
+(7, 'sadam', 'sadam@gmail.com', 'sadam', '$2y$10$4NBuaD4peyKlp7wQDYWf6ejjR1ksO6LSVWTixhVx3Wes1z03oz7wS', '08432498234', 'petugas_keswan', 1, '2025-12-22 13:49:21', '2026-01-04 14:11:51'),
+(8, 'udin', 'udin@gmail.com', 'udin', '$2y$10$j3O0bBdHJwQpiIDyGGlbb.XQUbyhQGG5l/BqWbXmL8x/5qzU0Bd5a', '081234567891', 'petugas_keswan', 1, '2026-01-03 17:30:04', '2026-01-04 14:11:51'),
+(9, 'Petugas Kesmavet', 'kesmavet@sipandhewa.com', 'kesmavet', '$2y$12$d8uxl2khUCqNFpvfUxW3S.qWnpJ4Zsxa95zIb3VssPIzcFZyd1SOy', NULL, 'petugas_kesmavet', 1, '2026-01-04 14:11:51', '2026-01-04 15:34:57'),
+(10, 'Petugas Keswan', 'keswan@sipandhewa.com', 'keswan', '$2y$12$d8uxl2khUCqNFpvfUxW3S.qWnpJ4Zsxa95zIb3VssPIzcFZyd1SOy', NULL, 'petugas_keswan', 1, '2026-01-04 14:11:51', '2026-01-04 14:48:30'),
+(11, 'Petugas Bitpro', 'bitpro@sipandhewa.com', 'bitpro', '$2y$12$d8uxl2khUCqNFpvfUxW3S.qWnpJ4Zsxa95zIb3VssPIzcFZyd1SOy', NULL, 'petugas_bitpro', 1, '2026-01-04 14:11:51', '2026-01-04 15:35:49'),
+(12, 'Kepala Dinas', 'kadis@sipandhewa.com', 'kadis', '$2y$12$d8uxl2khUCqNFpvfUxW3S.qWnpJ4Zsxa95zIb3VssPIzcFZyd1SOy', NULL, 'kepala_dinas', 1, '2026-01-04 14:11:51', '2026-01-04 14:45:27'),
+(13, 'budi', 'budi@gmail.com', 'budi', '$2y$10$MJw1gJiTP2lneEBBSZ3K3eaguSlgOZ7fRDktAECQdvCmGFrTgTIu6', '081234567891', 'petugas_kesmavet', 1, '2026-01-04 14:47:44', '2026-01-04 14:48:02'),
+(14, 'bagas', 'bagas@gmail.com', 'bagas', '$2y$10$ZTp6x/wRBL3unqYYIADEUuoZ3XbJ0b./1A42igxgghCJx781P.Jxe', '08347427642', 'petugas_bitpro', 1, '2026-01-04 15:40:42', '2026-01-04 15:40:54');
 
 -- --------------------------------------------------------
 
@@ -466,11 +474,11 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `username`, `password`, `phone`,
 
 CREATE TABLE `users_contoh` (
   `id` int NOT NULL,
-  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `full_name` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `role` enum('admin','user','peternak') COLLATE utf8mb4_general_ci DEFAULT 'user',
+  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `full_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `role` enum('admin','user','peternak') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'user',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -490,13 +498,13 @@ INSERT INTO `users_contoh` (`id`, `username`, `email`, `password`, `full_name`, 
 
 CREATE TABLE `vaksinasi` (
   `id` int NOT NULL,
-  `nama_pemilik` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nama_pemilik` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `desa_id` int DEFAULT NULL,
   `kecamatan_id` int DEFAULT NULL,
-  `jenis_hewan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `umur_hewan` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `jenis_hewan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `umur_hewan` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `tanggal_vaksinasi` date DEFAULT NULL,
-  `jenis_vaksin` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `jenis_vaksin` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_by` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -635,7 +643,7 @@ ALTER TABLE `pemotongan`
 -- AUTO_INCREMENT for table `penyakit_hewan`
 --
 ALTER TABLE `penyakit_hewan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `peternakan`
@@ -665,7 +673,7 @@ ALTER TABLE `survei_pasar`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users_contoh`
