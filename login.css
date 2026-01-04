@@ -1,0 +1,151 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #4CAF50; /* Hijau Utama */
+    --secondary-color: #388E3C;
+    --background-color: #f4f7f6;
+    --box-background: #ffffff;
+    --text-color: #333;
+    --border-color: #ddd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    /* Menggunakan background gradien yang menenangkan */
+    background: linear-gradient(135deg, #e0f2f1 0%, #c8e6c9 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box {
+    background-color: var(--box-background);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Logo dan Judul */
+.logo {
+    font-size: 50px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.login-box h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.login-box p {
+    color: #777;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* Form Styling */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 15px;
+    color: #999;
+    font-size: 16px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px; /* Tambah padding kiri untuk ikon */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    outline: none;
+}
+
+/* Options (Remember Me & Forgot Password) */
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: var(--primary-color); /* Mengubah warna checkbox */
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Button Styling */
+.login-button {
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.login-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.login-button:active {
+    transform: scale(0.99);
+}
+
+/* Footer Text */
+.footer-text {
+    margin-top: 30px;
+}
+
+.footer-text p {
+    font-size: 12px;
+    color: #aaa;
+}

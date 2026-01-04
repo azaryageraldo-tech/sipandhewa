@@ -1,0 +1,269 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --primary-color: #4CAF50; /* Hijau Utama */
+    --secondary-color: #388E3C;
+    --background-color: #f4f7f6;
+    --box-background: #ffffff;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+    --input-bg: #f8f9fa;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.register-box {
+    background-color: var(--box-background);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+/* Logo dan Judul */
+.logo {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.register-box h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.register-box p {
+    color: #666;
+    margin-bottom: 35px;
+    font-size: 15px;
+}
+
+/* Form Styling */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 16px;
+    color: #888;
+    font-size: 18px;
+    z-index: 10;
+    pointer-events: none;
+    transition: color 0.3s;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 14px 14px 14px 50px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--text-color);
+    background-color: var(--input-bg);
+    transition: all 0.3s ease;
+}
+
+.input-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--primary-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+    outline: none;
+}
+
+.input-group input:focus + .icon,
+.input-group select:focus + .icon {
+    color: var(--primary-color);
+}
+
+/* Placeholder color */
+::placeholder {
+    color: #aaa;
+}
+
+/* Terms and Conditions */
+.terms {
+    text-align: left;
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.terms-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.terms input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.terms-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* Button Styling */
+.register-button {
+    padding: 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
+}
+
+.register-button:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+    transform: translateY(-2px);
+}
+
+.register-button:active {
+    transform: translateY(0);
+}
+
+/* Login Link */
+.login-link {
+    margin-top: 25px;
+}
+
+.login-link p {
+    font-size: 15px;
+    color: #666;
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Text */
+.footer-text {
+    margin-top: 40px;
+}
+
+.footer-text p {
+    font-size: 13px;
+    color: #999;
+}
+
+/* Messages */
+.error-message, .success-message {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.success-message {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .register-container {
+        padding: 15px;
+    }
+
+    .register-box {
+        padding: 30px 20px;
+    }
+
+    .register-box h1 {
+        font-size: 24px;
+    }
+    
+    .input-group input,
+    .input-group select {
+        font-size: 16px; /* Prevent zoom on iOS */
+        padding: 12px 12px 12px 45px;
+    }
+}
